@@ -1,0 +1,9 @@
+
+Cholera due to Vibrio cholerae 01, biovar cholerae=A00.0
+Cholera due to Vibrio cholerae 01, biovar eltor=A00.1
+Cholera, unspecified=A00.9
+Typhoid fever=A01.0
+Paratyphoid fever A=A01.1
+Paratyphoid fever B=A01.2
+Paratyphoid fever C=A01.3
+Paratyphoid fever, unspecified=A01.4

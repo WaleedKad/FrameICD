@@ -99,8 +99,8 @@ public class ICDPG  {
 
 
         // data importer
-        loadSuggestionsFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/Diseases.txt");
-        loadDiseaseToCodeMapFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/DiseasesAndCODES.txt");
+        loadSuggestionsFromFile("FRAMEICD/src/Data/Diseases.txt");
+        loadDiseaseToCodeMapFromFile("FRAMEICD/src/Data/DiseasesAndCODES.txt");
 
         //action listner and other
 

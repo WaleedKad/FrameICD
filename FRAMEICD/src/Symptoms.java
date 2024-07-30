@@ -119,8 +119,8 @@ public class Symptoms {
 
         //file reader(
 
-        loadSuggestionsFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/Diseases.txt");
-        loadDiseaseToCodeMapFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/Symptoms.txt");
+        loadSuggestionsFromFile("FRAMEICD/src/Data/Diseases.txt");
+        loadDiseaseToCodeMapFromFile("FRAMEICD/src/Data/Symptoms.txt");
 
         JList<String> suggestionList = new JList<>();
         DefaultListModel<String> suggestionListModel = new DefaultListModel<>();

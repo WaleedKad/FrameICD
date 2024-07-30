@@ -95,8 +95,8 @@ public class procedures {
 
         //file reader(
 
-        loadSuggestionsFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/Diseases.txt");
-        loadDiseaseToCodeMapFromFile("/Users/mbp/IdeaProjects/Updated/src/Data/procedures.txt");
+        loadSuggestionsFromFile("FRAMEICD/src/Data/Diseases.txt");
+        loadDiseaseToCodeMapFromFile("FRAMEICD/src/Data/procedures.txt");
 
         JList<String> suggestionList = new JList<>();
         DefaultListModel<String> suggestionListModel = new DefaultListModel<>();

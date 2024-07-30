@@ -29,7 +29,7 @@ public class Symptoms {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon bgImageIcon = new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/orang_batuk.gif");
+                ImageIcon bgImageIcon = new ImageIcon("FRAMEICD/src/IMGES/orang_batuk.gif");
                 Image bgImage = bgImageIcon.getImage();
                 g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
             }

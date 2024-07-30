@@ -27,7 +27,7 @@ public class procedures {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon bgImageIcon = new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/medical_loop_dribbble_1.gif");
+                ImageIcon bgImageIcon = new ImageIcon("FRAMEICD/src/IMGES/medical_loop_dribbble_1.gif");
                 Image bgImage = bgImageIcon.getImage();
                 g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
             }

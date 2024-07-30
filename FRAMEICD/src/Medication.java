@@ -11,13 +11,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 public class Medication {
+
     private final List<String> autocompleteSuggestions = new ArrayList<>();
     private final Map<String, String> Med = new HashMap<>();
 
-    public Medication(){JFrame Medication = new JFrame();
-        Medication.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        Medication.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    public Medication() {
+        // Create and set up the JFrame
+        JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Create a custom JPanel to paint the background image
         JPanel bgPanel = new JPanel() {
@@ -29,90 +33,70 @@ public class Medication {
                 g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
             }
         };
+
         // Set the layout manager of the JPanel to null for absolute positioning
         bgPanel.setLayout(null);
-        // Set the layout manager of the content pane to BorderLayout
-        Medication.getContentPane().setLayout(new BorderLayout());
-        Medication.getContentPane().add(bgPanel, BorderLayout.CENTER);
-        Medication.setVisible(true);// <---- to here
+        frame.getContentPane().setLayout(new BorderLayout());
+        frame.getContentPane().add(bgPanel, BorderLayout.CENTER);
 
+        // Create and add UI components
+        JTextField sentences = new JTextField();
+        sentences.setBounds(15, 570, 500, 50);
+        bgPanel.add(sentences);
 
+        JButton converter = new JButton("Show Medication");
+        converter.setBounds(520, 720, 130, 50);
+        bgPanel.add(converter);
 
-
-
-
-        //obj or button text etc
-
-        JTextField Sentences = new JTextField();
-        Sentences.setBounds(15,570,500,50);
-        Sentences.setVisible(true);
-        bgPanel.add(Sentences);
-
-        JButton Converter = new JButton("Show Medication");
-        Converter.setBounds(520,720,130,50);
-        Converter.setVisible(true);
-        bgPanel.add(Converter);
-
-        JTextArea Container = new JTextArea();
-        Container.setBounds(930, 570, 500, 200);
-        Container.setLineWrap(true);
-        Container.setWrapStyleWord(true);
-        Container.setEditable(false);
-        bgPanel.add(Container);
-
-        JScrollPane scrollPane = new JScrollPane(Container);
+        JTextArea container = new JTextArea();
+        container.setBounds(930, 570, 500, 200);
+        container.setLineWrap(true);
+        container.setWrapStyleWord(true);
+        container.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(container);
         scrollPane.setBounds(930, 570, 500, 200);
-        scrollPane.setVisible(true);
         bgPanel.add(scrollPane);
 
-        JButton Transfer = new JButton("Transfer"+"-->");
-        Transfer.setBounds(830,720,90,50);
-        bgPanel.add(Transfer);
+        JButton transfer = new JButton("Transfer-->");
+        transfer.setBounds(830, 720, 90, 50);
+        bgPanel.add(transfer);
 
-        JTextField MedT = new JTextField();
-        MedT.setBounds(15,720,500,50);
-        MedT.setVisible(true);
-        bgPanel.add(MedT);
+        JTextField medT = new JTextField();
+        medT.setBounds(15, 720, 500, 50);
+        bgPanel.add(medT);
 
         JButton clearSentenceButton = new JButton("Clear");
         clearSentenceButton.setBounds(520, 570, 100, 50);
-        clearSentenceButton.setVisible(true);
         bgPanel.add(clearSentenceButton);
 
         JButton clearButton = new JButton("Clear");
         clearButton.setBounds(830, 660, 90, 50);
-        clearButton.setVisible(true);
         bgPanel.add(clearButton);
 
-        JButton Back = new JButton("<-HomePage");
-        Back.setBounds(17,17,100,100);
-        Back.setVisible(true);
-        bgPanel.add(Back);
+        JButton back = new JButton("<-HomePage");
+        back.setBounds(17, 17, 100, 100);
+        bgPanel.add(back);
 
-
-        //file reader(
-
+        // Load data
         loadSuggestionsFromFile("FRAMEICD/src/Data/Diseases.txt");
-        loadDiseaseToCodeMapFromFile("FRAMEICD/src/Data/Mecation.txt");
+        loadDiseaseToCodeMapFromFile("FRAMEICD/src/Data/Medication.txt");
 
+        // Set up autocomplete suggestion list
         JList<String> suggestionList = new JList<>();
         DefaultListModel<String> suggestionListModel = new DefaultListModel<>();
         suggestionList.setModel(suggestionListModel);
         suggestionList.setVisibleRowCount(5);
 
-        //Sentance TextFild Functionalty
-        // Create a JScrollPane for the suggestion list
         JScrollPane suggestionScrollPane = new JScrollPane(suggestionList);
-        suggestionScrollPane.setBounds(15, 620, 500, 100); // Adjust position and size as needed
+        suggestionScrollPane.setBounds(15, 620, 500, 100);
         bgPanel.add(suggestionScrollPane);
         suggestionScrollPane.setVisible(false);
 
-        //Sentance TextFild Functionalty
-        // Add a KeyAdapter to the Sentences JTextField for autocomplete functionality
-        Sentences.addKeyListener(new KeyAdapter() {
+        // Add KeyAdapter for autocomplete functionality
+        sentences.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                String searchText = Sentences.getText().toLowerCase();
+                String searchText = sentences.getText().toLowerCase();
                 suggestionListModel.clear();
 
                 if (!searchText.isEmpty()) {
@@ -127,105 +111,87 @@ public class Medication {
                 }
             }
         });
-        //Sentance TextFild Functionalty
-        // Add an ActionListener to select a suggestion when clicked
+
+        // Add ActionListener for selecting a suggestion
         suggestionList.addListSelectionListener(e -> {
             if (!suggestionList.isSelectionEmpty()) {
-                Sentences.setText(suggestionList.getSelectedValue());
+                sentences.setText(suggestionList.getSelectedValue());
                 suggestionScrollPane.setVisible(false);
             }
         });
-        //file reader )
 
-
-        Converter.addActionListener(new ActionListener() {
+        // Add ActionListener for the Show Medication button
+        converter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Get the text from the Sentences JTextField and preprocess it
-                String enteredDiseaseName = Sentences.getText();
-
-                // Look up the corresponding code in the mapping
-                String Medv = Med.get(enteredDiseaseName);
-
-                // Set the code in the Code JTextField
-                MedT.setText(Medv);
-            }
-        });
-        Transfer.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Get the text from the Code and Sentences JTextFields
-                String Medication = MedT.getText();
-                String diseaseName = Sentences.getText();
-
-                // Format the text as specified and append it to the Container JTextArea with one line break
-                String formattedText =  diseaseName + " (Medication)-->(" + Medication + ")\n\n"; // Add an extra newline
-                Container.append(formattedText);
-
-                // Clear the Code and Sentences JTextFields after transferring
-                MedT.setText("");
-                Sentences.setText("");
+                String enteredDiseaseName = sentences.getText();
+                String medValue = Med.get(enteredDiseaseName);
+                medT.setText(medValue != null ? medValue : "Not found");
             }
         });
 
+        // Add ActionListener for the Transfer button
+        transfer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String medication = medT.getText();
+                String diseaseName = sentences.getText();
+                String formattedText = diseaseName + " (Medication)-->(" + medication + ")\n\n";
+                container.append(formattedText);
+                medT.setText("");
+                sentences.setText("");
+            }
+        });
 
-        // cleare Button Functionality  For Container
-        // Add an ActionListener to the Clear button
+        // Add ActionListener for the Clear button (for container)
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Clear the content in the Container JTextArea
-                Container.setText("");
+                container.setText("");
             }
         });
 
-
-        Back.addActionListener(new ActionListener() {
+        // Add ActionListener for the Back button
+        back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Close the current JFrame (HomeScreen)
-                Medication.dispose();
-
-                // Create and display a new instance of ICDPG
-                SwingUtilities.invokeLater(() -> {
-                    new HomeScreen();
-                });
+                frame.dispose();
+                SwingUtilities.invokeLater(() -> new HomeScreen());
             }
         });
 
+        // Set the frame visible
+        frame.setVisible(true);
     }
+
     private void loadDiseaseToCodeMapFromFile(String filename) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split("=");
                 if (parts.length == 2) {
                     String diseaseName = parts[0];
-                    String code = parts[1];
-                    Med.put(diseaseName, code);
+                    String medication = parts[1];
+                    Med.put(diseaseName, medication);
                 }
             }
-            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }}
-    private String loadSuggestionsFromFile(String filename) {
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
+        }
+    }
+
+    private void loadSuggestionsFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 autocompleteSuggestions.add(line);
             }
-            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return filename;
     }
 
-
     public static void main(String[] args) {
-  new Medication();
+        SwingUtilities.invokeLater(() -> new Medication());
     }
 }

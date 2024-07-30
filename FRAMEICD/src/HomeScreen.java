@@ -7,7 +7,7 @@ public class HomeScreen {
 
     public HomeScreen() {
 
-        // main frame andback ground from here ---->
+        // main frame and back ground from here ---->
         JFrame mainFrame = new JFrame();
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -27,10 +27,7 @@ public class HomeScreen {
         // Set the layout manager of the content pane to BorderLayout
         mainFrame.getContentPane().setLayout(new BorderLayout());
         mainFrame.getContentPane().add(bgPanel, BorderLayout.CENTER);
-        mainFrame.setVisible(true);// <---- to here
-
-
-
+        
         // Imge import section
         JLabel imageLabel = new JLabel();
         ImageIcon imageIcon = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
@@ -40,19 +37,19 @@ public class HomeScreen {
 
         JLabel imageLabelx = new JLabel();
         ImageIcon imageIconx = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
-        imageLabelx.setIcon(imageIcon);
+        imageLabelx.setIcon(imageIconx);
         imageLabelx.setBounds(670, 420,100,50);
         bgPanel.add(imageLabelx);
 
         JLabel imageLabelM = new JLabel();
         ImageIcon imageIconM = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
-        imageLabelM.setIcon(imageIcon);
+        imageLabelM.setIcon(imageIconM);
         imageLabelM.setBounds(670, 490,100,50);
         bgPanel.add(imageLabelM);
 
         JLabel imageLabelP = new JLabel();
         ImageIcon imageIconP = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
-        imageLabelP.setIcon(imageIcon);
+        imageLabelP.setIcon(imageIconP);
         imageLabelP.setBounds(670, 560,100,50);
         bgPanel.add(imageLabelP);
 
@@ -62,8 +59,7 @@ public class HomeScreen {
         Rectangle.setBounds(620,225,500,500);
         bgPanel.add(Rectangle);
 
-        //butten section
-
+        // Button section
         JButton ICDcode = new JButton("ICD-CODE");
         ICDcode.setBounds(670, 350, 100, 50);
         bgPanel.add(ICDcode);
@@ -73,20 +69,16 @@ public class HomeScreen {
         bgPanel.add(Symptoms);
 
         JButton Medication  = new JButton("Medication");
-        Medication .setBounds(670, 490, 100, 50);
-        bgPanel.add(Medication );
+        Medication.setBounds(670, 490, 100, 50);
+        bgPanel.add(Medication);
 
         JButton procedures  = new JButton("procedures");
-        procedures .setBounds(670, 560, 100, 50);
-        bgPanel.add(procedures );
+        procedures.setBounds(670, 560, 100, 50);
+        bgPanel.add(procedures);
 
+        // Remove mainFrame.pack(); as it is not needed for maximized frame
 
-
-
-        mainFrame.pack();
-
-        //Action listner aka functionality
-
+        // Action listeners aka functionality
         ICDcode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,20 +92,18 @@ public class HomeScreen {
             }
         });
 
-
         Symptoms.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Close the current JFrame (HomeScreen)
                 mainFrame.dispose();
 
-                // Create and display a new instance of ICDPG
+                // Create and display a new instance of Symptoms
                 SwingUtilities.invokeLater(() -> {
                     new Symptoms();
                 });
             }
         });
-
 
         Medication.addActionListener(new ActionListener() {
             @Override
@@ -121,7 +111,7 @@ public class HomeScreen {
                 // Close the current JFrame (HomeScreen)
                 mainFrame.dispose();
 
-                // Create and display a new instance of ICDPG
+                // Create and display a new instance of Medication
                 SwingUtilities.invokeLater(() -> {
                     new Medication();
                 });
@@ -134,13 +124,15 @@ public class HomeScreen {
                 // Close the current JFrame (HomeScreen)
                 mainFrame.dispose();
 
-                // Create and display a new instance of ICDPG
+                // Create and display a new instance of procedures
                 SwingUtilities.invokeLater(() -> {
                     new procedures();
                 });
             }
         });
 
+        // Make the frame visible
+        mainFrame.setVisible(true);
     }
 
     public static void main(String[] args) {

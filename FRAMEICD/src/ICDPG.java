@@ -27,7 +27,7 @@ public class ICDPG  {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon bgImageIcon = new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/medical-icons.gif");
+                ImageIcon bgImageIcon = new ImageIcon("FRAMEICD/src/IMGES/medical-icons.gif");
                 Image bgImage = bgImageIcon.getImage();
                 g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
             }

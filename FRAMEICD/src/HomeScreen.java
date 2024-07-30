@@ -17,7 +17,7 @@ public class HomeScreen {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon bgImageIcon = new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/medical_building_800x600.gif");
+                ImageIcon bgImageIcon = new ImageIcon("FRAMEICD/src/IMGES/medical_building_800x600.gif");
                 Image bgImage = bgImageIcon.getImage();
                 g.drawImage(bgImage, 0, 0, getWidth(), getHeight(), this);
             }
@@ -33,31 +33,31 @@ public class HomeScreen {
 
         // Imge import section
         JLabel imageLabel = new JLabel();
-        ImageIcon imageIcon = new ImageIcon(new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
+        ImageIcon imageIcon = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
         imageLabel.setIcon(imageIcon);
         imageLabel.setBounds(670, 350,100,50);
         bgPanel.add(imageLabel);
 
         JLabel imageLabelx = new JLabel();
-        ImageIcon imageIconx = new ImageIcon(new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
+        ImageIcon imageIconx = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
         imageLabelx.setIcon(imageIcon);
         imageLabelx.setBounds(670, 420,100,50);
         bgPanel.add(imageLabelx);
 
         JLabel imageLabelM = new JLabel();
-        ImageIcon imageIconM = new ImageIcon(new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
+        ImageIcon imageIconM = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
         imageLabelM.setIcon(imageIcon);
         imageLabelM.setBounds(670, 490,100,50);
         bgPanel.add(imageLabelM);
 
         JLabel imageLabelP = new JLabel();
-        ImageIcon imageIconP = new ImageIcon(new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
+        ImageIcon imageIconP = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 2.png").getImage().getScaledInstance(100,51,Image.SCALE_DEFAULT));
         imageLabelP.setIcon(imageIcon);
         imageLabelP.setBounds(670, 560,100,50);
         bgPanel.add(imageLabelP);
 
         JLabel Rectangle = new JLabel();
-        ImageIcon Rectangleimage = new ImageIcon(new ImageIcon("/Users/mbp/IdeaProjects/Updated/src/IMGES/Rectangle 3.png").getImage().getScaledInstance(200, 300, Image.SCALE_DEFAULT));
+        ImageIcon Rectangleimage = new ImageIcon(new ImageIcon("FRAMEICD/src/IMGES/Rectangle 3.png").getImage().getScaledInstance(200, 300, Image.SCALE_DEFAULT));
         Rectangle.setIcon(Rectangleimage);
         Rectangle.setBounds(620,225,500,500);
         bgPanel.add(Rectangle);
